@@ -1,0 +1,247 @@
+
+<html>
+	<head>
+		<style>
+			.wzrk-alert .wiz-show-animate{
+				background-color: tomato;
+				color: white;
+				border: 2px solid black;
+				margin: 20px;
+				padding: 20px;
+			}
+			.wzrk-powered{
+				display: none;
+			}
+		</style>
+ 		<!-- <link rel="manifest" href="manifest.json"> -->
+
+		<script type="text/javascript">
+			var login = true;
+
+			console.log("1 - login variable's value is ",login);
+
+			var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+			// replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+			//clevertap.account.push({"id": "TEST-969-768-8K6Z"});
+			//clevertap.account.push({"id": "TEST-WW8-467-496Z"});
+			//clevertap.account.push({"id": "468-8RW-K56Z"});
+			clevertap.account.push({"id": "869-768-8K6Z"});
+			clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
+			clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agrees to share their IP data
+			(function () {
+					var wzrk = document.createElement('script');
+					wzrk.type = 'text/javascript';
+					wzrk.async = true;
+					wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';
+					var s = document.getElementsByTagName('script')[0];
+					s.parentNode.insertBefore(wzrk, s);
+			})();
+			/*
+			document.getElementById("login").addEventListener("click", function() {
+				console.log("onUserLogin called");
+				clevertap.onUserLogin.push({
+					"Site": {
+					"Name": "Biswadeep", // String
+					"identity": "biswadeep456@clevertap.com",//630216032,  // String or number
+					"Email": "biswadeep456@clevertap.com", // Email address of the user
+					"Phone": "+919478321829",  // Phone (with the country code)
+					"Gender": "F", // Can be either M or F
+					"Highest Education" : "Masters",
+					"Qualification" : 12,
+					"DOB": new Date(), // Date of Birth. Date object
+
+					// optional fields. controls whether the user will be sent email, push etc.
+					"MSG-email": true, // Disable email notifications
+					"MSG-push": true,   // Enable push notifications
+					"MSG-sms": true,    // Enable sms notifications
+					"MSG-whatsapp": true, // Enable WhatsApp notifications
+					}
+					});
+			});
+			*/
+			//In web, it is not possible to track location.
+			//clevertap.setLocation(19.1849348, 72.8397202); //not working - 7th july, 2022
+			 
+			/*clevertap.profile.push({
+			 "Site": {
+			   "Email": "hina@gmail.com", // Email address of the user
+			// update some custom profile property fields 
+			   "Plan-type":"Gold",
+			   "Education level" : "P.hd",
+			   "Ocupation" : "Job",
+			   "Account status":"active"
+			 }
+			});*/
+
+			//Event without event properties
+			// clevertap.event.push("Index Viewed");
+
+			//Event with event properties
+			// clevertap.event.push("Product Viewed", {
+			//   "Product name":"Casio Chronograph Watch",
+			//   "Category":"Mens Accessories",
+			//   "Price":159.99,  //Price should have a numeric datatype (int, float, etc)
+			// });
+
+
+		</script>
+
+	</head>
+	<body>
+		<h1><center>Index - Web Push</center></h1>
+
+		To call onUserLogin()/ method - <button id="loginbtn">Click here</button>
+		<br><br>
+		To raise Product Viewed event and button click event - <button id="btn">Click here</button>
+		<br><br>
+
+		<!-- <button id="btn2">create new user</button> -->
+
+		<button id="btn1">Click here to raise event</button> - Selected Items - with map values under 1 event property
+
+		<script>
+			
+			document.getElementById("loginbtn").addEventListener("click", function() {
+
+				console.log("login button clicked");
+
+				login = true;
+
+				if(login == true) {
+					console.log("2 - login variable's value is ",login);
+
+					//location.replace("https://maroon-evita-62.tiiny.site/login.html");
+					// var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+					// // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+					// clevertap.account.push({"id": "TEST-969-768-8K6Z"});
+					// clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
+					// clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agrees to share their IP data
+					// (function () {
+					// 		var wzrk = document.createElement('script');
+					// 		wzrk.type = 'text/javascript';
+					// 		wzrk.async = true;
+					// 		wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';
+					// 		var s = document.getElementsByTagName('script')[0];
+					// 		s.parentNode.insertBefore(wzrk, s);
+					// })();
+
+					//new user login
+					clevertap.onUserLogin.push({
+						"Site": {
+						"Name": "khushbu", // String
+						"Identity": 7567576447,  // String or number
+						"Email": "Khush1@gmail.com", // Email address of the user
+						"Phone": "+917567576446",  // Phone (with the country code)
+						"Gender": "F", // Can be either M or F
+						"Highest Education" : "Masters",
+						"Qualification" : 12,
+						"DOB": new Date(), // Date of Birth. Date object
+
+						// optional fields. controls whether the user will be sent email, push etc.
+						"MSG-email": true, // Disable email notifications
+						"MSG-push": true,   // Enable push notifications
+						"MSG-sms": true,    // Enable sms notifications
+						"MSG-whatsapp": true, // Enable WhatsApp notifications
+						}
+					});
+					}
+				
+			});
+
+			const itemsArr = ["Christian Louboutin Black Leather Toundra Coyote Fur Trimmed Ankle Boots Size 40.5", "Jimmy Choo Black Patent Leather Pela Cork Wedge Sandals Size 39.5",];
+
+			const itemsMapVal1 = new Map([
+				["name", "Christian Louboutin Black Leather Toundra Coyote Fur Trimmed Ankle Boots Size 40.5"],
+				["id", "43094"],
+				["price", 538.46],
+				["brand", "Christian Louboutin"],
+				["category", "Women"],
+				["variant", ""]
+			]);
+
+			const itemsMapVal2 = new Map([
+				["name", "Jimmy Choo Black Patent Leather Pela Cork Wedge Sandals Size 39.5"],
+				["id", "52087"],
+				["price", 168.6],
+				["brand", "Jimmy Choo"],
+				["category", "Women"],
+				["variant", ""]
+			]);
+
+			const itemsMap = [itemsMapVal1,itemsMapVal2];
+
+			document.getElementById("btn").addEventListener("click", function() {
+				console.log("event raise - button clicked");
+
+				clevertap.event.push("Button Clicked");
+
+				clevertap.event.push("Product Viewed", {
+					"Product name":"Casio Chronograph Watch",
+					"Category":"Mens Accessories",
+					"Price":159.99,  //Price should have a numeric datatype (int, float, etc)
+				});
+			});
+
+			document.getElementById("btn1").addEventListener("click", function() {
+				
+				clevertap.event.push("Charged", {
+					"quantity": 2,
+					"Items": [
+						{
+							"name": "Christian Louboutin Black Leather Toundra Coyote Fur Trimmed Ankle Boots Size 40.5",
+							"id": "43094",
+							"price": 538.46,
+							"brand": "Christian Louboutin",
+							"category": "Women",
+							"variant": ""
+						},
+						{
+							"name": "Jimmy Choo Black Patent Leather Pela Cork Wedge Sandals Size 39.5",
+							"id": "52087",
+							"price": 168.6,
+							"brand": "Jimmy Choo",
+							"category": "Women",
+							"variant": ""
+						}
+					],
+					"amount": 707.06,
+					"Currency": "USD",
+                	"Payment mode": "Credit Card",
+				});
+				
+				
+				
+				// Only charged event can have multiple values under 1 event property. Other events can't have multiple values under its event properties.
+				/*
+				clevertap.event.push("Selected Items - sub values having array", {
+					"quantity": 2,
+					"items": itemsArr,
+				});
+				*/
+
+				// clevertap.event.push("Product Viewed - 1", {
+				// 	"Product name":"Casio Chronograph Watch",
+				// 	"Category":"Mens Accessories",
+				// 	"Price":59.99,
+				// });
+
+				// Only charged event can have multiple values under 1 event property. Other events can't have multiple values under its event properties.
+				/*
+				clevertap.event.push("Selected Items - sub values having map", {
+					"quantity": 2,
+					"items": itemsMap,
+				});
+				*/
+			});
+
+			function test(){
+				document.querySelector("#btn1").click(); //btn click will raised charged event
+			}
+
+		</script>
+
+		<script src="clevertap_sw.js"></script>
+		<script src="notification_prompt.js"></script>
+
+	</body>
+</html>
