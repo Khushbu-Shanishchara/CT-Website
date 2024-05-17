@@ -45,18 +45,6 @@
         clevertap.account.push({ "id": clevertapId });
         clevertap.privacy.push({ optOut: false }); //set the flag to true, if the user of the device opts out of sharing their data
         clevertap.privacy.push({ useIP: true }); //set the flag to true, if the user agrees to share their IP data
-        if (botUserIds.includes(userId) || botUserIds.length == 0) {
-            setTimeout(clevertap.notifications.push({
-                "titleText": 'Get latest update from Tripjack!',
-                "bodyText": 'Subscribe and get offers, travel updates and more through daily notifications',
-                "okButtonText": 'Subscribe Now!',
-                "rejectButtonText": 'Ask me later',
-                "okButtonColor": '#f28046',
-                "verbose": true,
-                "askAgainTimeInSeconds": 5,
-                "serviceWorkerPath": "/clevertap_sw.js"
-            }), 4000);
-        }
         (function () {
             var wzrk = document.createElement('script');
             wzrk.type = 'text/javascript';
@@ -68,6 +56,19 @@
             s.parentNode.insertBefore(wzrk, s);
         })();
 
+	//shifted code here from initialisation:
+	if (botUserIds.includes(userId) || botUserIds.length == 0) {
+            setTimeout(clevertap.notifications.push({
+                "titleText": 'Get latest update from Tripjack!',
+                "bodyText": 'Subscribe and get offers, travel updates and more through daily notifications',
+                "okButtonText": 'Subscribe Now!',
+                "rejectButtonText": 'Ask me later',
+                "okButtonColor": '#f28046',
+                "verbose": true,
+                "askAgainTimeInSeconds": 5,
+                "serviceWorkerPath": "/clevertap_sw.js"
+            }), 4000);
+        }
     
 			/*
 			document.getElementById("login").addEventListener("click", function() {
