@@ -14,12 +14,12 @@
 			}
 		</style>
  		<!-- <link rel="manifest" href="manifest.json"> -->
-
+		<input id="clevertapId" value="468-8RW-K56Z" type="hidden">
 		<script type="text/javascript">
 			var login = true;
 
 			console.log("1 - login variable's value is ",login);
-
+/*
 			var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
 			// replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
 			//clevertap.account.push({"id": "TEST-969-768-8K6Z"});
@@ -36,6 +36,39 @@
 					var s = document.getElementsByTagName('script')[0];
 					s.parentNode.insertBefore(wzrk, s);
 			})();
+   */
+			
+        var clevertapId = document.getElementById('clevertapId').value;
+
+        var clevertap = { event: [], profile: [], account: [], onUserLogin: [], notifications: [], privacy: [] };
+        // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+        clevertap.account.push({ "id": clevertapId });
+        clevertap.privacy.push({ optOut: false }); //set the flag to true, if the user of the device opts out of sharing their data
+        clevertap.privacy.push({ useIP: true }); //set the flag to true, if the user agrees to share their IP data
+        if (botUserIds.includes(userId) || botUserIds.length == 0) {
+            setTimeout(clevertap.notifications.push({
+                "titleText": 'Get latest update from Tripjack!',
+                "bodyText": 'Subscribe and get offers, travel updates and more through daily notifications',
+                "okButtonText": 'Subscribe Now!',
+                "rejectButtonText": 'Ask me later',
+                "okButtonColor": '#f28046',
+                "verbose": true,
+                "askAgainTimeInSeconds": 5,
+                "serviceWorkerPath": "/clevertap_sw.js"
+            }), 4000);
+        }
+        (function () {
+            var wzrk = document.createElement('script');
+            wzrk.type = 'text/javascript';
+            wzrk.src = ('https:' == document.location.protocol ?
+            'https://d2r1yp2w7bby2u.cloudfront.net' :
+            'http://static.clevertap.com') + '/js/clevertap.min.js';
+            wzrk.defer = true;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wzrk, s);
+        })();
+
+    
 			/*
 			document.getElementById("login").addEventListener("click", function() {
 				console.log("onUserLogin called");
@@ -82,7 +115,7 @@
 			//   "Category":"Mens Accessories",
 			//   "Price":159.99,  //Price should have a numeric datatype (int, float, etc)
 			// });
-clevertap.notifications.push({
+/*clevertap.notifications.push({
    	"titleText": "Would you like to receive Push Notifications?",
    	"bodyText": "We promise to only send you relevant content and give you updates on your transactions",
    	"okButtonText": "Sign me up!",
@@ -90,7 +123,7 @@ clevertap.notifications.push({
    	"okButtonColor":"#F28046",
    	"askAgainTimeInSeconds":20,
   	"serviceWorkerPath": "clevertap_sw.js" // path to your custom service worker file
-  });
+  });*/
 
 		</script>
 
