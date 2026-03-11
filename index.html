@@ -14,7 +14,7 @@
 			}
 		</style>
  		<!-- <link rel="manifest" href="manifest.json"> -->
-		<input id="clevertapId" value="468-8RW-K56Z" type="hidden">
+		<input id="clevertapId" value="RK8-W48-856Z" type="hidden">
 		<script type="text/javascript">
 			var login = true;
 
@@ -65,18 +65,27 @@
         })();*/
 
 	//shifted code here from initialisation:
-	if (botUserIds.includes(userId) || botUserIds.length == 0) {
-            setTimeout(clevertap.notifications.push({
-                "titleText": 'Get latest update from Tripjack!',
-                "bodyText": 'Subscribe and get offers, travel updates and more through daily notifications',
-                "okButtonText": 'Subscribe Now!',
-                "rejectButtonText": 'Ask me later',
-                "okButtonColor": '#f28046',
-                "verbose": true,
-                "askAgainTimeInSeconds": 5,
-                "serviceWorkerPath": "/clevertap_sw.js"
-            }), 4000);
-        }
+	// if (botUserIds.includes(userId) || botUserIds.length == 0) {
+ //            setTimeout(clevertap.notifications.push({
+ //                "titleText": 'Get latest update from Tripjack!',
+ //                "bodyText": 'Subscribe and get offers, travel updates and more through daily notifications',
+ //                "okButtonText": 'Subscribe Now!',
+ //                "rejectButtonText": 'Ask me later',
+ //                "okButtonColor": '#f28046',
+ //                "verbose": true,
+ //                "askAgainTimeInSeconds": 5,
+ //                "serviceWorkerPath": "/clevertap_sw.js"
+ //            }), 4000);
+ //        }
+			clevertap.notifications.push({
+   	"titleText": "Would you like to receive Push Notifications?",
+   	"bodyText": "We promise to only send you relevant content and give you updates on your transactions",
+   	"okButtonText": "Sign me up!",
+   	"rejectButtonText": "No thanks",
+   	"okButtonColor":"#F28046",
+   	"askAgainTimeInSeconds":5,
+  	"serviceWorkerPath": "/clevertap_sw.js" // path to your custom service worker file
+  });
     
 			/*
 			document.getElementById("login").addEventListener("click", function() {
@@ -295,3 +304,4 @@
 
 	</body>
 </html>
+
